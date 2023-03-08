@@ -11,10 +11,11 @@ LoLMasteryTool is an application that can be used to track character progression
 
 # Current features include:
 - Mastery screen
-  - Sort by "Name, Mastery, Mastery points until next level, Tokens remaining"
+  - Sort by "Name, Mastery, Mastery points until next level, Tokens remaining". Remembers this setting on relaunch
   - Filter results by character name, "Mastery Level' or "Tokens Left"
 - Account Search
 - Config Screen
+  - Set default account name and screen to show on launch (uses registry)
 - "ARAM" Challenge Tracker mode
   - This tracks a different set of information, this feature was requested by a friend.
 - Summary Screen
