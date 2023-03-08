@@ -1,4 +1,4 @@
-# LoLMasteryToolPresentationVer
+# LoLMasteryTool by Fluruxion
 
 A presentation version of the original repo, LoLMasteryTool, which is private.
 
