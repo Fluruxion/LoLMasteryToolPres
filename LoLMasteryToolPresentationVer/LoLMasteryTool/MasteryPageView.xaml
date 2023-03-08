@@ -1,0 +1,260 @@
+﻿<Window x:Class="LoLMasteryTool.MasteryPageView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoLMasteryTool"
+        x:Name="MasteryPageWindowView"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Background="#202124"
+        Title="LoL Mastery Tool" Height="1080" Width="1920">
+    <Window.Resources>
+        <ControlTemplate x:Key="Twatters" TargetType="Button">
+            <Grid Background="Black">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
+    <ScrollViewer>
+        <StackPanel>
+            <Button x:Name="SaveButton" Height="50" Width="50" Content="Save" Visibility="Collapsed" Command="{Binding CommandClose}"/>
+
+            <Grid Height="60">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" Foreground="#E4E6EB" Height="30" Width="80" Content="Completed" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                        <Label.Resources>
+                            <Style TargetType="{x:Type Label}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding DataContext.champNameSize, ElementName=MasteryPageWindowView}" Value="2">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding DataContext.champNameSize, ElementName=MasteryPageWindowView}" Value="1">
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Resources>
+                    </Label>
+                    <Label Margin="0,-5,0,0" Grid.Column="0" Grid.Row="1" FontSize="18" FontWeight="Bold" Foreground="#E4E6EB" Height="30" Width="80" Content="{Binding AramChampsCompletedString}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                        <Label.Resources>
+                            <Style TargetType="{x:Type Label}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding DataContext.champNameSize, ElementName=MasteryPageWindowView}" Value="2">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding DataContext.champNameSize, ElementName=MasteryPageWindowView}" Value="1">
+                                        <Setter Property="Visibility" Value="Hidden"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Label.Resources>
+                    </Label>
+
+                    <!--<Label Grid.Column="0" Grid.Row="0" Foreground="#E4E6EB" Height="30" Width="80" Content="Role" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>-->
+                    <Label Grid.Column="1" Grid.Row="0" Foreground="#E4E6EB" Height="30" Width="80" Content="Mastery" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <Label Grid.Column="2" Grid.Row="0" Foreground="#E4E6EB" Height="30" Width="80" Content="Tokens Left" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+
+                    <!--<ComboBox Grid.Column="0" Grid.Row="1" Height="20" Width="80" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ItemsSource="{Binding RoleFilter}" SelectedValue="{Binding RoleSelected}"/>-->
+                    <ComboBox Grid.Column="1" Grid.Row="1" Height="20" Width="80" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ItemsSource="{Binding MasteryFilter}" SelectedValue="{Binding MasterySelectedWithRefresh}"/>
+                    <ComboBox Grid.Column="2" Grid.Row="1" Height="20" Width="80" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ItemsSource="{Binding TokenFilter}" SelectedValue="{Binding TokenSelectedWithRefresh}"/>
+                    
+                </Grid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Button Grid.Column="0" Grid.RowSpan="2" Height="40" Width="120" Content="Summoner Search" Command="{Binding LaunchSummonerSearchScreenCommand}"/>
+                    <Label Grid.Column="1" Grid.Row="0" Foreground="#E4E6EB" Height="30" Width="80" Content="Sort by:" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    <ComboBox Grid.Column="1" Grid.Row="1" Height="28" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ItemsSource="{Binding SortByList}" SelectedValue="{Binding SortBySelected}"/>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Height="50" Width="60" Content="Config" Command="{Binding CommandLaunchConfig}"/>
+                    <Button Grid.Column="1" Height="50" Width="60" Content="Summary" Command="{Binding CommandTextSummary}"/>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Height="50" Width="60" Content="Update" Command="{Binding CommandRefresh}"/>
+                    <Button Grid.Column="1" Height="50" Width="100" Content="{Binding SwapScreenText}" Command="{Binding CommandSwap}"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" Width="150" Height="20" HorizontalAlignment="Right" Margin="0,0,5,0" Text="{Binding SearchChampNameString, UpdateSourceTrigger=PropertyChanged}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Command="{Binding CommandSearchChampName}" Key="Enter"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+                    <Button Grid.Column="1" Width="50" Height="30" HorizontalAlignment="Left" Margin="5,0,0,0" Content="Search" Command="{Binding CommandSearchChampName}"/>
+                </Grid>
+
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ItemsControl HorizontalAlignment="Left" Margin="50,40,0,5" Grid.Column="0" x:Name="ListBox1" ItemsSource="{Binding ChampListFiltered}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel ItemWidth="{Binding DataContext.ItemWidth, ElementName=MasteryPageWindowView }" ItemHeight="{Binding DataContext.ItemHeight, ElementName=MasteryPageWindowView }"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="#3A3B3C" Width="{Binding DataContext.gridBackWidth, ElementName=MasteryPageWindowView }" Height="{Binding DataContext.gridBackHeight, ElementName=MasteryPageWindowView }">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding DataContext.colDefWidth1, ElementName=MasteryPageWindowView }"/>
+                                    <ColumnDefinition Width="{Binding DataContext.colDefWidth2, ElementName=MasteryPageWindowView }"/>
+                                    <ColumnDefinition Width="{Binding DataContext.colDefWidth3, ElementName=MasteryPageWindowView }"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="40"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="25"/>
+                                    <RowDefinition Height="10"/>
+                                </Grid.RowDefinitions>
+                                <Button Template="{StaticResource Twatters}" Grid.Column="1" Grid.Row="0" Height="100" Width="100" BorderThickness="0">
+                                    <Button.Resources>
+                                        <Style TargetType="{x:Type Button}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding DataContext.champNameSize, ElementName=MasteryPageWindowView}" Value="2">
+                                                    <Setter Property="Command" Value="{Binding DataContext.ChampClicked, ElementName=MasteryPageWindowView}"/>
+                                                    <Setter Property="CommandParameter" Value="{Binding ChampionID}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Resources>
+                                    <ContentControl>
+                                        <Image Source="{Binding ChampionIconPath}">
+                                            <Image.Resources>
+                                                <Style TargetType="{x:Type Image}">
+                                                    <Style.Triggers>
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding AramCompleted}" Value="true"/>
+                                                                <Condition Binding="{Binding DataContext.champNameSize, ElementName=MasteryPageWindowView}" Value="2"/>
+                                                            </MultiDataTrigger.Conditions>
+                                                            <Setter Property="Opacity" Value="0.2"/>
+                                                        </MultiDataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Image.Resources>
+                                        </Image>
+                                    </ContentControl>
+                                </Button>
+                                <Label Grid.Column="1" Grid.Row="1" Foreground="#8ab4f8" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding ChampionName}">
+                                    <Label.Resources>
+                                        <Style TargetType="{x:Type Label}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding DataContext.champNameSize, ElementName=MasteryPageWindowView}" Value="1">
+                                                    <Setter Property="FontSize" Value="12"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding DataContext.champNameSize, ElementName=MasteryPageWindowView}" Value="2">
+                                                    <Setter Property="FontSize" Value="16"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Label.Resources>
+                                </Label>
+                                <Label Grid.Column="1" Grid.Row="2" Foreground="#E4E6EB" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding MasteryScoreDisplay}"/>
+                                <Label Grid.Column="1" Grid.Row="3" Foreground="#E4E6EB" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding MasteryPointDisplay}"/>
+                                <Label Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" Grid.Row="4" Foreground="#E4E6EB" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding TokensDisplay}"/>
+                                <Grid Grid.Column="2" Grid.Row="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="25"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Visibility="Hidden" Foreground="#E4E6EB" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="{Binding RekindledDisplay}"/>
+                                    <Image Grid.Row="1" Source="{Binding ChampionMasteryIcon}" Height="50" Width="50"/>
+                                    <Grid Grid.Row="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="25"/>
+                                            <ColumnDefinition Width="25"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Button Grid.Column="0" Visibility="Hidden" Content="-" Foreground="#8ab4f8" FontSize="16" FontWeight="Bold" BorderBrush="Transparent" Command="{Binding DataContext.CommandDecreaseRekindle, ElementName=MasteryPageWindowView}" CommandParameter="{Binding}">
+                                            <Button.Style>
+                                                <Style TargetType="{x:Type Button}">
+                                                    <Setter Property="Background" Value="Transparent"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Border Background="{TemplateBinding Background}">
+                                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="#222222"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                        <Button Grid.Column="1" Visibility="Hidden" Content="+" Foreground="#8ab4f8" FontSize="16" FontWeight="Bold" BorderBrush="Transparent" Command="{Binding DataContext.CommandIncreaseRekindle, ElementName=MasteryPageWindowView}" CommandParameter="{Binding}">
+                                            <Button.Style>
+                                                <Style TargetType="{x:Type Button}">
+                                                    <Setter Property="Background" Value="Transparent"/>
+                                                    <Setter Property="Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                                <Border Background="{TemplateBinding Background}">
+                                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="#222222"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,51 @@
+﻿<Window x:Class="LoLMasteryTool.AddChampionScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoLMasteryTool"
+        mc:Ignorable="d"
+        Title="AddChampionScreen" Height="250" Width="600">
+    <Grid Margin="5,5,5,5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" HorizontalContentAlignment="Center" Content="Name"/>
+        <TextBox  Grid.Column="0" Grid.Row="1" Text="{Binding ChampionName}" Margin="2,2,2,2"/>
+        <Label Grid.Column="1" Grid.Row="0" HorizontalContentAlignment="Center" Content="Mastery"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Mastery}" Margin="2,2,2,2"/>
+        <Label Grid.Column="2" Grid.Row="0" HorizontalContentAlignment="Center" Content="Tokens"/>
+        <TextBox Grid.Column="2" Grid.Row="1" Text="{Binding Tokens}" Margin="2,2,2,2"/>
+        <Label Grid.Column="3" Grid.Row="0" HorizontalContentAlignment="Center" Content="Rekindled"/>
+        <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding Rekindled}" Margin="2,2,2,2"/>
+
+        <Label Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Center" Content="Top"/>
+        <Label Grid.Column="1" Grid.Row="3" HorizontalContentAlignment="Center" Content="Jungle"/>
+        <Label Grid.Column="2" Grid.Row="3" HorizontalContentAlignment="Center" Content="Mid"/>
+        <Label Grid.Column="3" Grid.Row="3" HorizontalContentAlignment="Center" Content="Adc"/>
+        <Label Grid.Column="4" Grid.Row="3" HorizontalContentAlignment="Center" Content="Support"/>
+
+        <CheckBox Grid.Column="0" Grid.Row="4" HorizontalAlignment="Center" IsChecked="{Binding Top}"/>
+        <CheckBox Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" IsChecked="{Binding Jungle}"/>
+        <CheckBox Grid.Column="2" Grid.Row="4" HorizontalAlignment="Center" IsChecked="{Binding Mid}"/>
+        <CheckBox Grid.Column="3" Grid.Row="4" HorizontalAlignment="Center" IsChecked="{Binding Adc}"/>
+        <CheckBox Grid.Column="4" Grid.Row="4" HorizontalAlignment="Center" IsChecked="{Binding Support}"/>
+
+        <Button Grid.Column="2" Grid.Row="6" Content="Save &amp; Add" Command="{Binding CommandCreateChampion}"/>
+
+    </Grid>
+</Window>

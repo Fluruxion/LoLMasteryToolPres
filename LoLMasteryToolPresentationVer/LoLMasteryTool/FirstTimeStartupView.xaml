@@ -1,0 +1,32 @@
+﻿<Window x:Class="LoLMasteryTool.FirstTimeStartupView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoLMasteryTool"
+        mc:Ignorable="d"
+        Title="LoLMasteryTool Configuration" Height="500" Width="500">
+    <StackPanel>
+        <Label Margin="50,100,50,0" HorizontalAlignment="Center" FontSize="18" Content="Summoner Name:"/>
+        <TextBox x:Name="DefaultNameTextBox" Margin="50,0,50,0" Height="30" Width="200" VerticalContentAlignment="Center" FontSize="16" Text="" HorizontalContentAlignment="Center"/>
+        <Label x:Name="WarningSummoner"  Margin="0,0,0,0" FontSize="12" Content="Please enter a summoner name" Visibility="Hidden" Foreground="Red" HorizontalContentAlignment="Center"/>
+        <Label Margin="50,50,50,0" HorizontalAlignment="Center" FontSize="18" Content="Default Screen:"/>
+        <Grid  Margin="0,0,0,0" Height="60" Width="200">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Mastery" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <Label Content="ARAM" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+            <CheckBox x:Name="CheckMastery" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CheckMastery_Click"/>
+            <CheckBox x:Name="CheckAram" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Click="CheckAram_Click"/>
+        </Grid>
+        <Label x:Name="WarningScreen"  Margin="0,0,0,0" FontSize="12" Content="Please select a screen" Visibility="Hidden" Foreground="Red" HorizontalContentAlignment="Center"/>
+
+        <Button x:Name="ConfirmButton" Margin="50,50,50,0" Height="30" Width="100" FontSize="16" Content="Confirm" HorizontalContentAlignment="Center" Click="ConfirmButton_Click"/>
+    </StackPanel>
+</Window>
