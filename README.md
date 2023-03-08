@@ -6,7 +6,9 @@ This repo was created so that I could remove any information that I wished to ke
 
 Downloading this version will result in a program that does not run unless the user provides their own Riot API key as the environment variable "turtle".
 
-LoLMasteryTool is an application that can be used to track character progression within a game that is not easy to access during character select, this was originally intended just to be a tool I could use to check a single value that was not visible when I wanted it, and has grown over time to present more useful information as I feel I require it.
+# Description
+
+LoLMasteryTool is an application that can be used to track character progression within a game that is not easy to access during character select, this was originally intended just to be a tool I could use to check a single value that was not visible when I wanted it and has grown over time to present more useful information as I feel I require/desire it.
 
 
 # Current features include:
